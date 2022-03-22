@@ -1,0 +1,67 @@
+@import "../../global/variables";
+
+.homeowners__upload {
+  max-width: 500px;
+  margin: 30px auto;
+
+  h1 {
+    color: $grey;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .homeowners__upload-form {
+    background: $grey;
+    border: 2px solid $white;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    max-width: 500px;
+    margin: 30px auto;
+    text-align: left;
+
+    &.homeowners__upload-form--error {
+      border: 2px solid $red;
+    }
+
+    .homeowners__upload-form__button {
+      background: $black;
+      border: none;
+      color: $white;
+      padding: 2px 10px;
+      cursor: pointer;
+    }
+
+    .homeowners__upload-form__input {
+      color: rgba($white, 0.6);
+      width: 100%;
+    }
+
+    .homeowners__upload-form__input::file-selector-button {
+      visibility: hidden;
+    }
+
+    .homeowners__upload-form__input::before {
+      content: "Select a file...";
+      color: $white;
+      display: inline-block;
+      background: rgba($white, 0.3);
+      border: none;
+      padding: 5px 16px;
+      outline: none;
+      white-space: nowrap;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .homeowners__upload-form__input:hover {
+      &::before {
+        background: rgba($white, 0.2);
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import "../../global/variables";
+
+.homeowners__list {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2px;
+
+  li {
+    padding: 5px;
+  }
+
+  li:nth-child(even) {
+    background-color: rgba($black, 0.3);
+  }
+}

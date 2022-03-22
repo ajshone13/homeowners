@@ -1,0 +1,8 @@
+// global
+@use "./styles/global/base";
+@use "./styles/global/variables";
+
+// components
+@use "./styles/components/Header";
+@use "./styles/components/Upload";
+@use "./styles/components/People";
