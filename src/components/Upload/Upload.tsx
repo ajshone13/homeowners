@@ -1,7 +1,7 @@
 import Papa from 'papaparse';
 import { useState } from 'react';
 
-const Upload = ({ people, setPeople }: any) => {
+const Upload = ( { setPeople }: any ) => {
   const person: any = [];
   const [error, setError] = useState(false);
 
@@ -9,8 +9,8 @@ const Upload = ({ people, setPeople }: any) => {
     return name.trim().replace(/\./g, "");
   }
 
-  const createObj = ( names: any ) => {
-    names.forEach(( name: any, index:any ) => {   
+  const createObj = ( names: Array<string> ) => {
+    names.forEach(( name: any, index ) => {   
       const trimmedName = trimNameAndRemoveDots(name);
       const nextTrimmedName = names[index + 1] ? trimNameAndRemoveDots(names[index + 1]) : null;
       const initial = trimmedName.split(' ').length >= 3 ? ( trimmedName.split(' ')[1].length <= 2 ? trimmedName.split(' ')[1] : '' ) : '';
@@ -33,12 +33,16 @@ const Upload = ({ people, setPeople }: any) => {
     });
   }
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = ( e: React.SyntheticEvent ) => {
     e.preventDefault();
-    const file = e.target[0].files[0] ? e.target[0].files[0] : setError(true);
+    const target = e.target as typeof e.target & {
+      0: { files: any };
+    };
+    const file = target[0].files[0] ? target[0].files[0] : setError(true);
 
     Papa.parse(file, {
       header: true,
+      skipEmptyLines: true,
       complete: (results) => {
         setError(false);
         results.data.map(( row: any ) => {
